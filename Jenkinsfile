@@ -9,19 +9,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
                 sh 'sbt clean compile'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
                 sh 'sbt clean test'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'ls -la'
             }
         }
     }
