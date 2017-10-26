@@ -2,7 +2,6 @@ pipeline {
     agent {
             docker {
                 image 'berkgokden/sbt-base:v0.1'
-                args '-v $WORKSPACE:/src'
             }
         }
 
@@ -19,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'ls -la'
+                sh 'echo $DOCKER_VERSION'
             }
         }
     }
