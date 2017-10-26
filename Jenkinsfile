@@ -2,7 +2,7 @@ pipeline {
     agent {
             docker {
                 image 'berkgokden/sbt-base:v0.1'
-                args '-v $(pwd):/src'
+                args '-v $WORKSPACE:/src'
             }
         }
 
