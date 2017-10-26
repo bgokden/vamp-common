@@ -1,17 +1,22 @@
 pipeline {
-    agent any
+    agent {
+            docker {
+                image 'berkgokden/sbt-base:v0.1'
+                args '-v $(pwd):/src'
+            }
+        }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                docker run -it -v $(pwd):/src berkgokden/sbt-base:v0.1 sbt clean compile
+                sh 'sbt clean compile'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                docker run -it -v $(pwd):/src berkgokden/sbt-base:v0.1 sbt test
+                sh 'sbt clean test'
             }
         }
         stage('Deploy') {
