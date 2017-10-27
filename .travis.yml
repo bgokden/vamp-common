@@ -5,7 +5,7 @@ services:
 
 before_install:
   - docker pull berkgokden/sbt-base:v0.2
-  - docker run -d --name builder -v $(pwd):/src -e BINTRAY_USER=$BINTRAY_USER -e BINTRAY_PASS=$BINTRAY_PASS berkgokden/sbt-base:v0.2 sleep infinity
+  - docker run -d --name builder -v $(pwd):/src -e VAMP_VERSION=$TRAVIS_COMMIT -e BINTRAY_USER=$BINTRAY_USER -e BINTRAY_PASS=$BINTRAY_PASS berkgokden/sbt-base:v0.2 sleep infinity
 
 jobs:
   include:
