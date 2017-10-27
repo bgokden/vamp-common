@@ -8,3 +8,4 @@ before_install:
 
 script:
   - docker run -it -v $(pwd):/src berkgokden/sbt-base:v0.1 sbt clean test
+  - docker run -it -v $(pwd):/src -v /var/run/docker.sock:/var/run/docker.sock berkgokden/sbt-base:v0.1 docker ps
