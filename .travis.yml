@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker pull berkgokden/sbt-base:v0.1
+
+script:
+  - docker run -it -v $(pwd):/src berkgokden/sbt-base:v0.1 sbt clean test

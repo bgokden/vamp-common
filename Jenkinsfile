@@ -2,7 +2,6 @@ pipeline {
     agent {
             docker {
                 image 'berkgokden/sbt-base:v0.1'
-                args '-v /var/run/docker.sock:/var/run/docker.sock'
             }
         }
 
@@ -19,7 +18,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker ps'
+                sh 'sbt githubRelease'
             }
         }
     }
