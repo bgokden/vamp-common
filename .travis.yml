@@ -1,11 +1,17 @@
-sudo: required
+language: generic
 
 services:
   - docker
 
 before_install:
-  - docker pull berkgokden/sbt-base:v0.1
+  - docker pull berkgokden/sbt-base:v0.2
+  - docker run -d --name builder -v $(pwd):/src -e BINTRAY_USER=$BINTRAY_USER -e BINTRAY_PASS=$BINTRAY_PASS berkgokden/sbt-base:v0.2 sleep infinity
 
-script:
-  - docker run -it -v $(pwd):/src berkgokden/sbt-base:v0.1 sbt clean test
-  - docker run -it -v $(pwd):/src -v /var/run/docker.sock:/var/run/docker.sock berkgokden/sbt-base:v0.1 docker ps
+jobs:
+  include:
+    - stage: test
+      script: docker exec -it builder sbt clean test
+    - stage: deploy
+      # require the branch name to be master
+      if: branch = master
+      script: docker exec -it builder sbt publish

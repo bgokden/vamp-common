@@ -15,6 +15,11 @@ scalaVersion := "2.12.1"
 organizationName := "Magnetic.io"
 organizationHomepage := Some(url("http://vamp.io"))
 
+bintrayOrganization := Some("magneticio")
+bintrayOmitLicense := true
+bintrayRepository := "vamp"
+
+
 scalariformSettings ++ Seq(ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(AlignParameters, true)
   .setPreference(AlignSingleLineCaseStatements, true)
