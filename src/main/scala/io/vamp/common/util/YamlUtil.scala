@@ -21,7 +21,8 @@ object YamlUtil {
         val map = new mutable.LinkedHashMap[String, Any]()
         source.entrySet().asScala.foreach(entry ⇒ map += entry.getKey.toString → convert(entry.getValue, preserveOrder))
         map
-      } else source.entrySet().asScala.map(entry ⇒ entry.getKey.toString → convert(entry.getValue, preserveOrder)).toMap
+      }
+      else source.entrySet().asScala.map(entry ⇒ entry.getKey.toString → convert(entry.getValue, preserveOrder)).toMap
     case source: java.util.List[_]     ⇒ source.asScala.map(convert(_, preserveOrder)).toList
     case source: java.lang.Iterable[_] ⇒ source.asScala.map(convert(_, preserveOrder)).toList
     case source                        ⇒ source

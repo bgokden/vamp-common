@@ -41,7 +41,8 @@ object HttpClient {
     if (!user.isEmpty && !password.isEmpty) {
       val credentials = TextUtil.encodeBase64(s"$user:$password")
       ("Authorization" → s"Basic $credentials") :: headers
-    } else headers
+    }
+    else headers
   }
 }
 

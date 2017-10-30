@@ -31,7 +31,8 @@ class TerminateFlowStage[T](pred: T ⇒ Boolean, forwardTerminatingMessage: Bool
               failStage(new RuntimeException("Flow terminated by TerminateFlowStage"))
             else
               completeStage()
-          } else push(out, chunk)
+          }
+          else push(out, chunk)
         }
       })
     }

@@ -129,7 +129,8 @@ trait HttpApiDirectives extends Directives with CorsDirectives {
     if (some != None) {
       val yaml = new Yaml()
       yaml.dumpAs(yaml.load(toJson(some)), if (some.isInstanceOf[List[_]]) Tag.SEQ else Tag.MAP, FlowStyle.BLOCK)
-    } else ""
+    }
+    else ""
   }
 
   private def toJson(some: Any) = some match {
