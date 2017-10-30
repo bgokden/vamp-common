@@ -14,4 +14,4 @@ jobs:
     - stage: deploy
       # require the branch name to be master
       if: branch = master
-      script: docker exec -it builder sbt publish
+      script: 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then docker exec -it builder sbt publish; fi'

@@ -8,7 +8,7 @@ organization := "io.vamp"
 
 name := "vamp-common"
 
-version := "9.6"
+version := "0.9.6"
 
 scalaVersion := "2.12.1"
 
